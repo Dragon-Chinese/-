@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<script src="js/unit/flexible.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="css/swiper.min.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<header class="header">
+				<input type="text" placeholder="小米MIx" /><img src="img/shouhua.png" alt="" />
+			</header>
+			<main class="main active">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="img/ban.png" alt="" /></div>
+						<div class="swiper-slide"><img src="img/ban2.png" alt="" /></div>
+					</div>
+				</div>
+			<ul class="list">
+			</ul>
+			<div class="tu">
+				<img src="img/ka.png" alt="" />
+			</div>
+			<ul class="zou">
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+			</ul>
+			<ul class="zou">
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+				<li>
+					<img src="img/last4.png" alt="" />
+				</li>
+			</ul>
+			</main>
+					<div class="main">2</div>
+					<div class="main">3</div>
+					<div class="main">4</div>
+			<script type="text/x-handlebars-template" id="xuan">
+				{{#each this}}
+				<li>
+					<dt><img src="img/huo.png" alt="" /></dt>
+					<dd>{{name}}</dd>
+				</li>
+				{{/each}}
+			</script>
+			<footer class="footer">
+				<ul>
+					<li>首页</li>
+					<li>分类</li>
+					<li>购物车</li>
+					<li>我的</li>
+				</ul>
+			
+			</footer>
+		</div>
+
+	</body>
+	<script src="js/unit/jquery-2.1.1.min.js"></script>
+	<script src="js/unit/handlebars.js"></script>
+	<script src="js/unit/render.js"></script>
+	<script src="js/unit/swiper.min.js"></script>
+	<script>
+		function ban() {
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: 1000,
+			})
+		}
+
+		function list() {
+			$.ajax({
+				type: "get",
+				url: "/ban",
+				async: true,
+				success: function(dat) {
+					var data = JSON.parse(dat);
+					console.log(data)
+					render("#xuan", data.list, ".list")
+				},
+				error: function(err) {
+					console.log(err)
+				}
+			});
+		}
+
+		function render(soucerTpl, data, targetEle) {
+			var swiperTpl = $(soucerTpl).html();
+			var template = Handlebars.compile(swiperTpl);
+			var html = template(data);
+			$(targetEle).html(html);
+		}
+		
+		function cli () {
+			$(".footer ul li").click(function () {
+				var ind = $(this).index();
+				$(".main").eq(ind).addClass("active").siblings().removeClass("active")
+			})
+		}
+		$(".header").click(function() {
+			window.location.href = "page/indextwo.html"
+		})
+		cli()
+		ban();
+		list()
+	</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8" />
+		<script src="../js/unit/flexible.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="header">
+				<input type="text" placeholder="小米MIx" /><img src="../img/shouhua.png" alt="" />
+			</header>
+			<main class="main active">
+				<h2>热门搜索</h2>
+				<div class="tu" style="margin-top: 0rem;">
+					<img src="../img/ka.png" alt="" />
+				</div>
+				<ul class="Rea">
+					<li>红米note5</li>
+					<li>苹果笔记本</li>
+					<li>苹果puls</li>
+					<li>长头发</li>
+					<li>带头发</li>
+					<li>红米note5</li>
+					<li>苹果笔记本</li>
+					<li>苹果puls</li>
+					<li>长头发</li>
+					<li>带头发</li>
+				</ul>
+				<ul class="dog">
+					<li>搜索记录1</li>
+					<li>搜索记录2</li>
+					<li>搜索记录3</li>
+					<li>搜索记录4</li>
+					<li>搜索记录5</li>
+				</ul>
+				<p>清空搜索记录</p>
+			</main>
+		</div>
+		<script src="../js/unit/jquery-2.1.1.min.js"></script>
+		<script>
+			$("p").click(function () {
+				$(".dog li").remove()
+			})
+		</script>
+	</body>
+</html>
